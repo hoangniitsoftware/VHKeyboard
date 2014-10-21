@@ -401,7 +401,7 @@ static VHKeyboard *_shareInstance;
 }
 
 -(BOOL)processCheckAndSetVHKey_textField:(UIView *)view setText:(NSString *)strValue{
-    if ([view isKindOfClass:[UITextField class]]) {
+    if (([view isKindOfClass:[UITextField class]]) || ([view isKindOfClass:[UITextView class]])) {
         if ([((UITextField *)view) isFirstResponder]) {
             if (!strValue) {
                 ((UITextField *)view).text = @"";
@@ -418,7 +418,7 @@ static VHKeyboard *_shareInstance;
 }
 
 -(BOOL)processCheckAndSelectAllTextInTextfield:(UIView *)view{
-    if ([view isKindOfClass:[UITextField class]]) {
+    if (([view isKindOfClass:[UITextField class]]) || ([view isKindOfClass:[UITextView class]])) {
         if ([((UITextField *)view) isFirstResponder]) {
             ((UITextField *)view).selectedTextRange = [((UITextField *)view) textRangeFromPosition:((UITextField *)view).beginningOfDocument toPosition:((UITextField *)view).endOfDocument];
             return YES;
@@ -431,7 +431,7 @@ static VHKeyboard *_shareInstance;
 }
 
 -(BOOL)processCheckAndCopySelectedTextInTextfield:(UIView *)view{
-    if ([view isKindOfClass:[UITextField class]]) {
+    if (([view isKindOfClass:[UITextField class]]) || ([view isKindOfClass:[UITextView class]])) {
         if ([((UITextField *)view) isFirstResponder]) {
             pasteboard = [UIPasteboard generalPasteboard];
             UITextField *focusTextfield = ((UITextField *)view);
@@ -450,7 +450,7 @@ static VHKeyboard *_shareInstance;
 }
 
 -(BOOL)processCheckAndPasteClipboardTextToTextfield:(UIView *)view{
-    if ([view isKindOfClass:[UITextField class]]) {
+    if (([view isKindOfClass:[UITextField class]]) || ([view isKindOfClass:[UITextView class]])) {
         if ([((UITextField *)view) isFirstResponder]) {
             pasteboard = [UIPasteboard generalPasteboard];
             NSString *clipboardText = pasteboard.string;
