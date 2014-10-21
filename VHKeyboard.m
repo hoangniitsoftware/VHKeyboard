@@ -455,7 +455,7 @@ static VHKeyboard *_shareInstance;
             pasteboard = [UIPasteboard generalPasteboard];
             NSString *clipboardText = pasteboard.string;
             if (clipboardText.length > 0) {
-                ((UITextField *)view).text = clipboardText;
+                ((UITextField *)view).text = [((UITextField *)view).text stringByAppendingString:clipboardText];;
             }else{
                 ((UITextField *)view).text = @"";
             }
